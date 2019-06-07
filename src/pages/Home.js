@@ -30,7 +30,7 @@ const Home = () => {
     const fetchData = async () => {
       if (zipCode && zipRegex.test(zipCode)) {
         const result = await axios(
-          `http://ctp-zip-api.herokuapp.com/zip/${zipCode}`
+          `https://ctp-zip-api.herokuapp.com/zip/${zipCode}`
         );
 
         setResults(result.data);
