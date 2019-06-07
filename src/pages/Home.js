@@ -14,11 +14,11 @@ import {
 import ZipCodeView from "../components/ZipCodeView";
 
 const jumboStyle = {
-  background: "#aa4b6b" /* fallback for old browsers */,
+  background: "#aa4b6b fixed center" /* fallback for old browsers */,
   background:
-    "-webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b)" /* Chrome 10-25, Safari 5.1-6 */,
+    "-webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b) fixed center" /* Chrome 10-25, Safari 5.1-6 */,
   background:
-    "linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    "linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b) fixed center" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 };
 
 const Home = () => {
@@ -42,29 +42,29 @@ const Home = () => {
   return (
     <div>
       <Jumbotron fluid style={jumboStyle}>
-        <Row>
-          <Col sm="12" md={{ size: 4, offset: 4 }}>
-            <InputGroup>
-              <Input id="Zip" placeholder="Enter Zip Code" />
-              <InputGroupAddon addonType="append">
-                <Button
-                  color="secondary"
-                  onClick={() => {
-                    setZipCode(document.getElementById("Zip").value);
-                  }}
-                >
-                  Search
-                </Button>
-              </InputGroupAddon>
-            </InputGroup>
-          </Col>
-        </Row>
+        <Container fluid>
+          <Row>
+            <Col sm="12" md={{ size: 6, offset: 3 }}>
+              <InputGroup>
+                <Input id="Zip" placeholder="Enter Zip Code" />
+                <InputGroupAddon addonType="append">
+                  <Button
+                    color="secondary"
+                    onClick={() => {
+                      setZipCode(document.getElementById("Zip").value);
+                    }}
+                  >
+                    Search
+                  </Button>
+                </InputGroupAddon>
+              </InputGroup>
+            </Col>
+          </Row>
+        </Container>
       </Jumbotron>
-      <Container>
-        {results.map(result => (
-          <ZipCodeView key={result.RecordNumber} result={result} />
-        ))}
-      </Container>
+      {results.map(result => (
+        <ZipCodeView key={result.RecordNumber} result={result} />
+      ))}
     </div>
   );
 };
