@@ -29,11 +29,15 @@ const Home = () => {
     let zipRegex = /\d{5}/g;
     const fetchData = async () => {
       if (zipCode && zipRegex.test(zipCode)) {
-        const result = await axios(
-          `https://ctp-zip-api.herokuapp.com/zip/${zipCode}`
-        );
+        try {
+          const result = await axios(
+            `https://ctp-zip-api.herokuapp.com/zip/${zipCode}`
+          );
 
-        setResults(result.data);
+          setResults(result.data);
+        } catch (error) {
+          alert(error);
+        }
       }
     };
     fetchData();
@@ -46,7 +50,13 @@ const Home = () => {
           <Row>
             <Col sm="12" md={{ size: 6, offset: 3 }}>
               <InputGroup>
-                <Input id="Zip" placeholder="Enter Zip Code" />
+                <Input
+                  id="Zip"
+                  placeholder="Enter Zip Code"
+                  onChange={() => {
+                    setZipCode(document.getElementById("Zip").value);
+                  }}
+                />
                 <InputGroupAddon addonType="append">
                   <Button
                     color="secondary"
