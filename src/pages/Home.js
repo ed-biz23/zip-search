@@ -43,7 +43,7 @@ const Home = () => {
     <div>
       <Jumbotron fluid style={jumboStyle}>
         <Row>
-          <Col sm="12" md={{ size: 6, offset: 3 }}>
+          <Col sm="12" md={{ size: 4, offset: 4 }}>
             <InputGroup>
               <Input id="Zip" placeholder="Enter Zip Code" />
               <InputGroupAddon addonType="append">
